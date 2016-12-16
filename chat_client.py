@@ -35,7 +35,7 @@ def chat_client():
 			else:
 				msg = sys.stdin.readline()
 				s.send(msg)
-				sys.stdout.write('[Me'); sys.stdout.flush()
+				sys.stdout.write('[Me]'); sys.stdout.flush()
 
 if __name__ == '__main__':
 	sys.exit(chat_client())
