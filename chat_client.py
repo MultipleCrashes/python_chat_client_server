@@ -37,7 +37,7 @@ def chat_client():
 					sys.stdout.write(user_phone_number); sys.stdout.flush()
 			else:
 				msg = sys.stdin.readline()
-				s.send(msg)
+				s.send(user_phone_number + str(msg))
 				sys.stdout.write(user_phone_number); sys.stdout.flush()
 
 if __name__ == '__main__':
