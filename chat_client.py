@@ -18,6 +18,9 @@ def chat_client():
                 print str(e)
 		print "unable to connect"
 		sys.exit()
+
+        user_phone_number=str(raw_input("enter your 10 digit phone number"))
+        user_phone_number = user_phone_number + " : "
 	while 1:
 		socket_list = [sys.stdin,s ]
 		# Get the list sockets which are readable 
@@ -31,11 +34,11 @@ def chat_client():
 				else:
 					# print data
 					sys.stdout.write(data)
-					sys.stdout.write('[ME]'); sys.stdout.flush()
+					sys.stdout.write(user_phone_number); sys.stdout.flush()
 			else:
 				msg = sys.stdin.readline()
 				s.send(msg)
-				sys.stdout.write('[Me]'); sys.stdout.flush()
+				sys.stdout.write(user_phone_number); sys.stdout.flush()
 
 if __name__ == '__main__':
 	sys.exit(chat_client())
