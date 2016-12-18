@@ -1,0 +1,11 @@
+argparse==1.2.1
+protobuf==3.1.0.post1
+pycrypto==2.6.1
+pymongo==3.4.0
+python-axolotl==0.1.35
+python-axolotl-curve25519==0.1
+python-dateutil==2.6.0
+pywhatsapp==0.0.7
+six==1.10.0
+wsgiref==0.1.2
+yowsup2==2.5.0
