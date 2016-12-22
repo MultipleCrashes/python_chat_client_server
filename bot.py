@@ -41,6 +41,9 @@ def chat_server():
 						print "Inserting data in database ",phone_no, message_by_phone_no
 						collection_handle.chat.insert_one({phone_no:message_by_phone_no})
 						print '['+str(sock.getpeername())+']'+data
+						from socketIO_client import SocketIO, LoggingNamespace
+						with SocketIO('localhost',8000,LoggingNamespace) as socketIO:
+							socketIO.emit(data)
 						broadcast(server_socket,sock,"\r" + '['+str(sock.getpeername())+']'+data)
 					else:
 						# remove the socket that is broken 
