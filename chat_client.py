@@ -35,14 +35,14 @@ def chat_client():
 		print "unable to connect"
 		sys.exit()
 
-		user_phone_number=str(raw_input("enter your 10 digit phone number : "))
-		while(len(user_phone_number)!=10):   # basic check 
-			print "please enter 10 digit mobile number"
-			user_phone_number = str(raw_input("enter your 10 digit phone number : "))
-		while not check_registered(user_phone_number):
-			user_phone_number = str(raw_input("previous user was not registerd please enter your 10 digit phone number : "))
+	user_phone_number=str(raw_input("enter your 10 digit phone number : "))
+	while(len(user_phone_number)!=10):   # basic check 
+		print "please enter 10 digit mobile number"
+		user_phone_number = str(raw_input("enter your 10 digit phone number : "))
+	while not check_registered(user_phone_number):
+		user_phone_number = str(raw_input("previous user was not registerd please enter your 10 digit phone number : "))
 
-		user_phone_number = user_phone_number + " : "
+	user_phone_number = user_phone_number + " : "
 	while 1:
 		socket_list = [sys.stdin,s ]
 		# Get the list sockets which are readable 
