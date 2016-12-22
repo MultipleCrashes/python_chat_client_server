@@ -33,24 +33,22 @@ def chat_server():
 					data = sock.recv(RECV_BUFFER)
 					if data:
 						# there is something in the socket
-                                                print "calling mongo connect"
-                                                mongo_handle = mongo_connect()
-                                                collection_handle = mongo_handle['whatsapp']
-                                                phone_no = data.split(":")[0]
-                                                message_by_phone_no = data.split(":")[1] 
-                                                print "Inserting data in database ",phone_no, message_by_phone_no
-                                                collection_handle.chat.insert_one({phone_no:message_by_phone_no})
-                                                print '['+str(sock.getpeername())+']'+data
+						print "calling mongo connect"
+						mongo_handle = mongo_connect()
+						collection_handle = mongo_handle['whatsapp']
+						phone_no = data.split(":")[0]
+						message_by_phone_no = data.split(":")[1] 
+						print "Inserting data in database ",phone_no, message_by_phone_no
+						collection_handle.chat.insert_one({phone_no:message_by_phone_no})
+						print '['+str(sock.getpeername())+']'+data
 						broadcast(server_socket,sock,"\r" + '['+str(sock.getpeername())+']'+data)
 					else:
 						# remove the socket that is broken 
 						if sock in SOCKET_LIST:
 							SOCKET_LIST.remove(sock)
-
 						boradcast(server_socket,sock,"client (%s, %s) is offline \n"%addr)
-
 				except Exception,e:
-                                        print "Exception found while data has to socket",str(e)
+					print "Exception found while data has to socket",str(e)
 					broadcast(server_socket, sock, "Client (%s, %s) is offline \n"%addr)
 					continue 
 	server_socket.close()
