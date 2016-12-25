@@ -13,12 +13,17 @@ var app = http.createServer(function(req, res) {
 var io = require('socket.io').listen(app);
 
 // Send current time to all connected clients
-function sendTime() {
-    io.emit('time', { time: new Date().toJSON() });
+function sendTime(data) {
+	io.emit('message',{message: "hi" });
+	io.emit('time',{time: new Date().toJSON()});
+
+   // io.emit('time', { time: new Date().toJSON() });
 }
 
+
+
 // Send current time every 10 secs
-setInterval(sendTime, 1);
+setInterval(sendTime, 1000);
 
 // Emit welcome message on connection
 io.on('connection', function(socket) {
